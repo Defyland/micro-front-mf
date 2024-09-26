@@ -6,7 +6,11 @@ const federatedConfig = {
   exposes: {
     "./ListCards": "./src/components/ListCards.tsx",
   },
-  shared: {},
+  shared: {
+    tailwindcss: { singleton: true },
+    react: { singleton: true },
+    "react-dom": { singleton: true },
+  },
 };
 
 const nextConfig = {

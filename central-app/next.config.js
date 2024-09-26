@@ -22,7 +22,11 @@ const nextConfig = {
       name: "host",
       filename: "static/chunks/remoteEntry.js",
       remotes: remotes,
-      shared: {},
+      shared: {
+        react: { singleton: true },
+        "react-dom": { singleton: true },
+        tailwindcss: { singleton: true },
+      },
     };
     config.plugins.push(new NextFederationPlugin(federatedConfig));
     return config;

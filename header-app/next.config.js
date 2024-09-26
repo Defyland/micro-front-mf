@@ -4,9 +4,13 @@ const federatedConfig = {
   name: "remoteHeader",
   filename: "static/chunks/remoteEntry.js",
   exposes: {
-    "./Header": "./src/components/Header.tsx",
+    "./Header": "./src/components/Header",
   },
-  shared: {},
+  shared: {
+    tailwindcss: { singleton: true },
+    react: { singleton: true },
+    "react-dom": { singleton: true },
+  },
 };
 
 const nextConfig = {

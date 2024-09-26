@@ -6,7 +6,10 @@ const federatedConfig = {
   exposes: {
     "./Footer": "./src/components/Footer.tsx",
   },
-  shared: {},
+  shared: {
+    react: { singleton: true },
+    "react-dom": { singleton: true },
+  },
 };
 
 const nextConfig = {
