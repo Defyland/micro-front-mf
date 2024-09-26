@@ -1,7 +1,7 @@
 import { Style } from "./Cards.style";
 import { ProductOptions } from "../utils";
 
-const Card = ({ thumbnail }: ProductOptions) => {
+const Card = ({ thumbnail, addOnCart }: ProductOptions) => {
   return (
     <div
       className={Style.Container}
@@ -13,7 +13,7 @@ const Card = ({ thumbnail }: ProductOptions) => {
     >
       <div className={Style.InnerContainer}>
         <div className={Style.ButtonContainer}>
-          <button className={Style.Button}>
+          <button className={Style.Button} onClick={addOnCart}>
             <span className={Style.ButtonText}>Adicionar</span>
           </button>
         </div>

@@ -18,28 +18,27 @@ const ListCards = dynamic(() => import("remoteCards/ListCards"), {
 
 export const App: React.FC = () => {
   const { getProducts } = useProducts();
-  const products = useStore((state) => state.products);
-  const addProducts = useStore((state) => state.addProducts);
+
+  const productsStore = useStore((state) => state);
 
   useEffect(() => {
     const init = async () => {
       const data = await getProducts();
-      console.log({ products });
-      addProducts(data.products);
+      productsStore.addProducts(data.products);
     };
 
-    if (products.length === 0) {
+    if (productsStore.products.length === 0) {
       init();
     }
-  }, []);
+  }, [getProducts, productsStore]);
 
   return (
     <div>
       <Suspense>
-        <Header />
+        <Header cartCount={productsStore.cart.length} />
       </Suspense>
       <Suspense>
-        <ListCards products={products} />
+        <ListCards productsStore={productsStore} />
       </Suspense>
       <Suspense>
         <Footer />

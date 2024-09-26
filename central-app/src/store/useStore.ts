@@ -1,13 +1,12 @@
 import { create } from "zustand";
+import { ProductOptions, ProductState } from "../../../global/entities";
 
-interface BearState {
-  products: any[];
-  addProducts: (products: any[]) => void;
-}
-
-export const useStore = create<BearState>((set) => ({
+export const useStore = create<ProductState>((set) => ({
   products: [],
-  addProducts: (products: any[]) => set(() => ({ products })),
+  cart: [],
+  selectedProducts: (product: ProductOptions) =>
+    set((state) => ({ cart: [...state.cart, product] })),
+  addProducts: (products: ProductOptions[]) => set(() => ({ products })),
 }));
 
 export default useStore;

@@ -4,7 +4,11 @@
 import "tailwindcss/tailwind.css";
 import { Style } from "./Header.styles";
 
-const Header = () => {
+interface HeaderProps {
+  cartCount: number;
+}
+
+const Header = ({ cartCount }: HeaderProps) => {
   return (
     <header className={Style.Header}>
       <div className={Style.Container}>
@@ -22,6 +26,7 @@ const Header = () => {
           className={Style.ActionsLogo}
           alt="actions logo"
         />
+        {cartCount > 0 && <span>{cartCount}</span>}
       </div>
     </header>
   );

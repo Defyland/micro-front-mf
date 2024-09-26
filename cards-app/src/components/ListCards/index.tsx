@@ -2,13 +2,24 @@
 import "tailwindcss/tailwind.css";
 import Card from "../Card";
 import { Style } from "./ListCards.styles";
+import { ProductState, ProductOptions } from "../../../../global/entities";
 
-const ListCards = (props) => {
+interface ListCardsProps {
+  productsStore: ProductState;
+}
+
+const ListCards = ({
+  productsStore: { products, selectedProducts },
+}: ListCardsProps) => {
   return (
     <div className={Style.Container}>
       <div className={Style.List}>
-        {props.products.map((product: any, index: number) => (
-          <Card key={index} {...product} />
+        {products.map((product: ProductOptions, index: number) => (
+          <Card
+            key={index}
+            {...product}
+            addOnCart={() => selectedProducts(product)}
+          />
         ))}
       </div>
     </div>
