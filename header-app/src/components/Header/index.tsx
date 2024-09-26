@@ -3,12 +3,10 @@
 
 import "tailwindcss/tailwind.css";
 import { Style } from "./Header.styles";
+import { HeaderProps } from "../../../../global/entities";
 
-interface HeaderProps {
-  cartCount: number;
-}
-
-const Header = ({ cartCount }: HeaderProps) => {
+const Header = ({ cartCount, changeCartState, showCart }: HeaderProps) => {
+  console.log({ showCart });
   return (
     <header className={Style.Header}>
       <div className={Style.Container}>
@@ -19,14 +17,20 @@ const Header = ({ cartCount }: HeaderProps) => {
           className={Style.WhiteLogo}
           alt="white logo"
         />
-        <img
-          src={
-            "https://github.com/user-attachments/assets/1267c8bf-0248-4c49-8ab9-1dbbce965966"
-          }
-          className={Style.ActionsLogo}
-          alt="actions logo"
-        />
-        {cartCount > 0 && <span>{cartCount}</span>}
+        <button onClick={changeCartState} className={Style.ActionItem}>
+          <img
+            src={
+              "https://github.com/user-attachments/assets/1267c8bf-0248-4c49-8ab9-1dbbce965966"
+            }
+            className={Style.ActionsLogo}
+            alt="actions logo"
+          />
+          {cartCount > 0 && (
+            <div className={Style.ActionCircle}>
+              <span className={Style.ActionCount}>{cartCount}</span>
+            </div>
+          )}
+        </button>
       </div>
     </header>
   );

@@ -42,11 +42,24 @@ export interface ProductOptions {
   meta: Meta;
   images: string[];
   thumbnail: string;
+  quantity?: number;
 }
 
 export interface ProductState {
+  showCart: boolean;
   products: ProductOptions[];
   cart: ProductOptions[];
   addProducts: (products: ProductOptions[]) => void;
   selectedProducts: (product: ProductOptions) => void;
+  changeCartState: () => void;
+}
+
+export interface HeaderProps {
+  cartCount: number;
+  changeCartState: () => void;
+  showCart: boolean;
+}
+
+export interface ListCardsProps {
+  productsStore: ProductState;
 }
