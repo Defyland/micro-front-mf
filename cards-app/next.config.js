@@ -8,8 +8,8 @@ const federatedConfig = {
   },
   shared: {
     tailwindcss: { singleton: true },
-    react: { singleton: true },
-    "react-dom": { singleton: true },
+    react: { singleton: true, requiredVersion: false },
+    "react-dom": { singleton: true, requiredVersion: false },
   },
 };
 

@@ -1,0 +1,17 @@
+{
+  "name": "microfront",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:central": "cd central-app && npm run dev",
+    "start:header": "cd header-app && npm run dev",
+    "start:footer": "cd footer-app && npm run dev",
+    "start:cards": "cd cards-app && npm run dev",
+    "start:all": "concurrently \"npm run start:central\" \"npm run start:header\" \"npm run start:footer\" \"npm run start:cards\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

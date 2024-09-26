@@ -7,8 +7,8 @@ const federatedConfig = {
     "./Footer": "./src/components/Footer.tsx",
   },
   shared: {
-    react: { singleton: true },
-    "react-dom": { singleton: true },
+    react: { singleton: true, requiredVersion: false },
+    "react-dom": { singleton: true, requiredVersion: false },
   },
 };
 
