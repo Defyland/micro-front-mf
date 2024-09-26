@@ -3,7 +3,7 @@
 import "tailwindcss/tailwind.css";
 import { Style } from "./Footer.styles";
 
-const Footer = (props) => {
+const Footer = () => {
   return (
     <footer className={Style.Footer}>
       <div className={Style.Container}>

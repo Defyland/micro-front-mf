@@ -24,6 +24,7 @@ export const useCart = create<CartStore>((set, get) => ({
         });
         set({ cart: response.data });
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       set({ error: "Failed to add item to cart" });
     } finally {
@@ -39,6 +40,7 @@ export const useCart = create<CartStore>((set, get) => ({
         const response = await apiService.delete(`/carts/${currentCart.id}/products/${productId}`);
         set({ cart: response.data });
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       set({ error: "Failed to remove item from cart" });
     } finally {
@@ -56,6 +58,7 @@ export const useCart = create<CartStore>((set, get) => ({
         });
         set({ cart: response.data });
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       set({ error: "Failed to update item quantity" });
     } finally {
