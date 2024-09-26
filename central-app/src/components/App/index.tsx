@@ -1,6 +1,8 @@
-import { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
+import { useProducts } from "@/data/services";
 
 import dynamic from "next/dynamic";
+import useStore from "@/store/useStore";
 
 const Header = dynamic(() => import("remoteHeader/Header"), {
   ssr: false,
@@ -14,14 +16,30 @@ const ListCards = dynamic(() => import("remoteCards/ListCards"), {
   ssr: false,
 });
 
-const App = () => {
+export const App: React.FC = () => {
+  const { getProducts } = useProducts();
+  const products = useStore((state) => state.products);
+  const addProducts = useStore((state) => state.addProducts);
+
+  useEffect(() => {
+    const init = async () => {
+      const data = await getProducts();
+      console.log({ products });
+      addProducts(data.products);
+    };
+
+    if (products.length === 0) {
+      init();
+    }
+  }, []);
+
   return (
     <div>
       <Suspense>
         <Header />
       </Suspense>
       <Suspense>
-        <ListCards />
+        <ListCards products={products} />
       </Suspense>
       <Suspense>
         <Footer />
@@ -29,5 +47,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;

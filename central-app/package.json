@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start:central": "npm run dev",
-    "start:header": "cd .. && cd header-app && npm run dev",
-    "start:footer": "cd .. && cd footer-app && npm run dev",
-    "start:cards": "cd .. && cd cards-app && npm run dev",
-    "start:all": "concurrently \"npm run start:central\" \"npm run start:header\" \"npm run start:footer\" \"npm run start:cards\"",
     "dev": "NEXT_PRIVATE_LOCAL_WEBPACK=true next dev",
     "build": "next build",
     "start": "next start",
@@ -16,10 +11,12 @@
   "dependencies": {
     "@module-federation/nextjs-mf": "^8.5.5",
     "@module-federation/typescript": "^3.1.3",
+    "axios": "^1.7.7",
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",
-    "webpack": "^5.95.0"
+    "webpack": "^5.95.0",
+    "zustand": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "@types/node": "^20",
