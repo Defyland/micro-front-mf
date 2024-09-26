@@ -43,29 +43,21 @@ const ListCards = ({
       </div>
 
       {showCart && (
-        <div
-          className="size-full fixed top-0 end-0 z-[80] opacity-100 overflow-x-hidden transition-all overflow-y-auto pointer-events-none"
-          role="dialog"
-          aria-labelledby="hs-basic-modal-label"
-        >
-          <div className="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
-            <div className="flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto">
-              <div className="flex justify-between items-center py-3 px-4 border-b">
-                <h3
-                  id="hs-basic-modal-label"
-                  className="font-bold text-gray-800"
-                >
+        <div className={Style.Modal} role="dialog" aria-labelledby="hs-basic-modal-label">
+          <div className={Style.ModalContent}>
+            <div className={Style.ModalCard}>
+              <div className={Style.ModalHeader}>
+                <h3 id="hs-basic-modal-label" className={Style.ModalTitle}>
                   Cart
                 </h3>
                 <button
                   onClick={changeCartState}
                   type="button"
-                  className="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none"
+                  className={Style.CloseButton}
                   aria-label="Close"
                   data-hs-overlay="#hs-basic-modal"
                 >
                   <span className="sr-only">Close</span>
-
                   <svg
                     className="shrink-0 size-4"
                     xmlns="http://www.w3.org/2000/svg"
@@ -83,14 +75,20 @@ const ListCards = ({
                   </svg>
                 </button>
               </div>
-              <div className="p-4 overflow-y-auto">
-                <div className="mt-1 text-gray-800 flex flex-col">
-                  {cartValues.map((item) => (
-                    <div key={item.id} className={Style.Item}>
-                      <span>{item.title}</span>
-                      <span>{`Qt: ${item.quantity}`}</span>
+              <div className={Style.ModalBody}>
+                <div className={Style.CartItems}>
+                  {cartValues.length > 0 ? (
+                    cartValues.map((item) => (
+                      <div key={item.id} className={Style.Item}>
+                        <span>{item.title}</span>
+                        <span>{`Qt: ${item.quantity}`}</span>
+                      </div>
+                    ))
+                  ) : (
+                    <div>
+                      <span>No items in the cart</span>
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>

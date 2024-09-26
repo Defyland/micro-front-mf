@@ -70,3 +70,32 @@ export interface CardsProps {
   title: string;
   addOnCart: () => void;
 }
+
+export interface CartItem {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
+  total: number;
+  discountPercentage: number;
+  discountedPrice: number;
+}
+
+export interface Cart {
+  id: number;
+  products: CartItem[];
+  total: number;
+  discountedTotal: number;
+  userId: number;
+  totalProducts: number;
+  totalQuantity: number;
+}
+
+export interface CartStore {
+  cart: Cart | null;
+  isLoading: boolean;
+  error: string | null;
+  addToCart: (productId: number, quantity: number) => Promise<void>;
+  removeFromCart: (productId: number) => Promise<void>;
+  updateQuantity: (productId: number, quantity: number) => Promise<void>;
+}

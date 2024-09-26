@@ -3,7 +3,7 @@ import { renderHook, act, waitFor } from "@testing-library/react";
 import { useProducts } from "./useProducts";
 import { apiService } from "../config";
 
-jest.mock("../config"); // Adjust the import path as necessary
+jest.mock("../config");
 
 describe("useProducts Hook", () => {
   const mockGet = jest.fn();
