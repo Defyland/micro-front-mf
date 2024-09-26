@@ -63,3 +63,10 @@ export interface HeaderProps {
 export interface ListCardsProps {
   productsStore: ProductState;
 }
+
+export interface CardsProps {
+  thumbnail: string;
+  price: number;
+  title: string;
+  addOnCart: () => void;
+}

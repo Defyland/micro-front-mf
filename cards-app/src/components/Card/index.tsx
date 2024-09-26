@@ -1,9 +1,10 @@
 import { Style } from "./Cards.style";
-import { ProductOptions } from "../utils";
+import { CardsProps } from "../../../../global/entities";
 
-const Card = ({ thumbnail, addOnCart }: ProductOptions) => {
+const Card = ({ thumbnail, price, title, addOnCart }: CardsProps) => {
   return (
     <div
+      data-testid={title}
       className={Style.Container}
       style={{
         backgroundImage: `url(${thumbnail})`,
@@ -13,8 +14,9 @@ const Card = ({ thumbnail, addOnCart }: ProductOptions) => {
     >
       <div className={Style.InnerContainer}>
         <div className={Style.ButtonContainer}>
+          <span className={Style.PriceText}>{`R$: ${price}`}</span>
           <button className={Style.Button} onClick={addOnCart}>
-            <span className={Style.ButtonText}>Adicionar</span>
+            <span className={Style.ButtonText}>COMPRAR</span>
           </button>
         </div>
       </div>

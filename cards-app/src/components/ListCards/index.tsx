@@ -74,9 +74,9 @@ const ListCards = ({
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
                     <path d="M18 6 6 18"></path>
                     <path d="m6 6 12 12"></path>
@@ -84,14 +84,14 @@ const ListCards = ({
                 </button>
               </div>
               <div className="p-4 overflow-y-auto">
-                <p className="mt-1 text-gray-800 flex flex-col">
+                <div className="mt-1 text-gray-800 flex flex-col">
                   {cartValues.map((item) => (
                     <div key={item.id} className={Style.Item}>
                       <span>{item.title}</span>
                       <span>{`Qt: ${item.quantity}`}</span>
                     </div>
                   ))}
-                </p>
+                </div>
               </div>
             </div>
           </div>

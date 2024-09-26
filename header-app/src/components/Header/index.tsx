@@ -5,8 +5,7 @@ import "tailwindcss/tailwind.css";
 import { Style } from "./Header.styles";
 import { HeaderProps } from "../../../../global/entities";
 
-const Header = ({ cartCount, changeCartState, showCart }: HeaderProps) => {
-  console.log({ showCart });
+const Header = ({ cartCount, changeCartState }: HeaderProps) => {
   return (
     <header className={Style.Header}>
       <div className={Style.Container}>
