@@ -28,8 +28,6 @@ const ListCards = ({
     []
   );
 
-  console.log({ showCart });
-
   return (
     <>
       <div className={Style.Container}>
