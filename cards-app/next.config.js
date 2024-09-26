@@ -4,7 +4,7 @@ const federatedConfig = {
   name: "remoteCards",
   filename: "static/chunks/remoteEntry.js",
   exposes: {
-    "./ListCards": "./src/components/ListCards.tsx",
+    "./ListCards": "./src/components/ListCards",
   },
   shared: {
     tailwindcss: { singleton: true },

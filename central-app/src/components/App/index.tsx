@@ -10,7 +10,7 @@ const Footer = dynamic(() => import("remoteFooter/Footer"), {
   ssr: false,
 });
 
-const CardList = dynamic(() => import("remoteCards/ListCards"), {
+const ListCards = dynamic(() => import("remoteCards/ListCards"), {
   ssr: false,
 });
 
@@ -21,7 +21,7 @@ const App = () => {
         <Header />
       </Suspense>
       <Suspense>
-        <CardList />
+        <ListCards />
       </Suspense>
       <Suspense>
         <Footer />
