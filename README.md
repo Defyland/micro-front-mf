@@ -99,7 +99,7 @@ Para facilitar o desenvolvimento, o projeto tem os seguintes scripts no arquivo 
 Versão do Node.js:
 
 ```bash
-v20.12.2
+v18.19.0
 ```
 
 Além disso, é necessário instalar o **Concurrently** individualmente para que todos os serviços sejam executados em paralelo:
