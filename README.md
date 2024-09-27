@@ -99,7 +99,7 @@ Para facilitar o desenvolvimento, o projeto tem os seguintes scripts no arquivo 
 Além disso, é necessário instalar o **Concurrently** individualmente para que todos os serviços sejam executados em paralelo:
 
 ```bash
-npm install concurrently
+npm install -g concurrently
 ```
 
 ## 📝 Instruções de Instalação
@@ -153,8 +153,7 @@ npm run test:all
 
 | Sem produtos selecionados  | Uma resolução intermediária  | Modal sem produtos selecionados |
 |-----------|-----------|----------|
-| <img width="559" alt="Captura de Tela 2024-09-27 às 10 06 57" src="https://github.com/user-attachments/assets/06d00698-b116-4257-aaac-39038d4ce338"> | <img width="866" alt="Captura de Tela 2024-09-27 às 10 07 55" src="https://github.com/user-attachments/assets/b9244d1a-5ed8-4036-91d7-e2231b003e0d">| <img width="379" alt="Captura de Tela 2024-09-27 às 10 16 47" src="https://github.com/user-attachments/assets/d356184e-c637-4e7d-ac08-5e5ee0af844a">
- |
+| <img width="559" alt="Captura de Tela 2024-09-27 às 10 06 57" src="https://github.com/user-attachments/assets/06d00698-b116-4257-aaac-39038d4ce338"> | <img width="866" alt="Captura de Tela 2024-09-27 às 10 07 55" src="https://github.com/user-attachments/assets/b9244d1a-5ed8-4036-91d7-e2231b003e0d">| <img width="379" alt="Captura de Tela 2024-09-27 às 10 16 47" src="https://github.com/user-attachments/assets/d356184e-c637-4e7d-ac08-5e5ee0af844a"> |
 
 ## 📝 Instruções Adicionais
 
