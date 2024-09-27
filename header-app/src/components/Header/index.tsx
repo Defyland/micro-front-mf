@@ -16,7 +16,7 @@ const Header = ({ cartCount, changeCartState }: HeaderProps) => {
           className={Style.WhiteLogo}
           alt="white logo"
         />
-        <button onClick={changeCartState} className={Style.ActionItem}>
+        <button onClick={changeCartState} className={Style.ActionContainer}>
           <img
             src={
               "https://github.com/user-attachments/assets/1267c8bf-0248-4c49-8ab9-1dbbce965966"
@@ -24,11 +24,7 @@ const Header = ({ cartCount, changeCartState }: HeaderProps) => {
             className={Style.ActionsLogo}
             alt="actions logo"
           />
-          {cartCount > 0 && (
-            <div className={Style.ActionCircle}>
-              <span className={Style.ActionCount}>{cartCount}</span>
-            </div>
-          )}
+          <span className={Style.ActionCount}>{cartCount || 0}</span>
         </button>
       </div>
     </header>

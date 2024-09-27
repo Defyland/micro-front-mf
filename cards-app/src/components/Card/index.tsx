@@ -1,24 +1,25 @@
 import { Style } from "./Cards.style";
 import { CardsProps } from "../../../../global/entities";
 
-const Card = ({ thumbnail, price, title, addOnCart }: CardsProps) => {
+const Card = ({ thumbnail, price, title, addOnCart, quantity }: CardsProps) => {
   return (
-    <div
-      data-testid={title}
-      className={Style.Container}
-      style={{
-        backgroundImage: `url(${thumbnail})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className={Style.InnerContainer}>
-        <div className={Style.ButtonContainer}>
+    <div data-testid={title} className={Style.Container}>
+      <div className={Style.ThumbnailContainer}>
+        <img src={thumbnail} alt={title} className={Style.Thumbnail} />
+        {quantity > 0 && (
+          <div className={Style.QuantityBadge}>
+            <span>{quantity}</span>
+          </div>
+        )}
+      </div>
+      <div className={Style.InfoContainer}>
+        <span className={Style.Title}>{title}</span>
+        <div className={Style.PriceContainer}>
           <span className={Style.PriceText}>{`R$: ${price}`}</span>
-          <button className={Style.Button} onClick={addOnCart}>
-            <span className={Style.ButtonText}>COMPRAR</span>
-          </button>
         </div>
+        <button className={Style.AddToCartButton} onClick={addOnCart}>
+          Adicionar ao carrinho
+        </button>
       </div>
     </div>
   );

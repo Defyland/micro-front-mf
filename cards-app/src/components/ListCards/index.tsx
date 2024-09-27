@@ -13,6 +13,7 @@ const ListCards = ({
     changeCartState,
   },
 }: ListCardsProps) => {
+  // Calcular quantidade de produtos no carrinho
   const cartValues: ProductOptions[] = cart.reduce<ProductOptions[]>(
     (acc, item) => {
       const found = acc.find((i) => i.id === item.id);
@@ -28,20 +29,33 @@ const ListCards = ({
     []
   );
 
+  // Calcular o total de itens e o valor total
+  const totalItems = cartValues.reduce((acc, item) => acc + item.quantity, 0);
+  const totalValue = cartValues.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
+
   return (
     <>
+      {/* Listagem de produtos */}
       <div className={Style.Container}>
         <div className={Style.List}>
-          {products.map((product: ProductOptions, index: number) => (
-            <Card
-              key={index}
-              {...product}
-              addOnCart={() => selectedProducts(product)}
-            />
-          ))}
+          {products.map((product: ProductOptions, index: number) => {
+            // Encontrar a quantidade do produto no carrinho, se houver
+            const cartProduct = cartValues.find((p) => p.id === product.id);
+            const quantity = cartProduct ? cartProduct.quantity : 0;
+
+            return (
+              <Card
+                key={index}
+                {...product}
+                quantity={quantity} // Passar a quantidade como uma prop
+                addOnCart={() => selectedProducts(product)}
+              />
+            );
+          })}
         </div>
       </div>
 
+      {/* Modal do carrinho */}
       {showCart && (
         <div className={Style.Modal} role="dialog" aria-labelledby="hs-basic-modal-label">
           <div className={Style.ModalContent}>
@@ -75,18 +89,36 @@ const ListCards = ({
                   </svg>
                 </button>
               </div>
+
               <div className={Style.ModalBody}>
                 <div className={Style.CartItems}>
                   {cartValues.length > 0 ? (
                     cartValues.map((item) => (
                       <div key={item.id} className={Style.Item}>
-                        <span>{item.title}</span>
-                        <span>{`Qt: ${item.quantity}`}</span>
+                        <img src={item.thumbnail} alt={item.title} className={Style.CartItemImage} />
+                        <div className={Style.CartItemInfo}>
+                          <span className={Style.CartItemTitle}>{item.title}</span>
+                          <span className={Style.CartItemPrice}>{`R$ ${item.price}`}</span> {/* Exibe o preço do produto */}
+                          <span className={Style.CartItemQuantity}>{`Qt: ${item.quantity}`}</span>
+                        </div>
                       </div>
                     ))
                   ) : (
-                    <div>
-                      <span>No items in the cart</span>
+                    <div className={Style.EmptyCart}>
+                      <img
+                        src="https://us.123rf.com/450wm/mifolga/mifolga1811/mifolga181100053/127711581-emo%C3%A7%C3%A3o-engra%C3%A7ada-chorando-rosto-emoji-rosto-triste-no-fundo-verde-emoticons-simples-pictogramas.jpg"
+                        alt="Empty cart"
+                        className={Style.EmptyCartImage}
+                      />
+                      <span className={Style.EmptyCartMessage}>Você ainda não tem produtos :( </span>
+                    </div>
+                  )}
+
+                  {/* Exibe o total de itens e valor */}
+                  {cartValues.length > 0 && (
+                    <div className={Style.TotalContainer}>
+                      <span className={Style.TotalText}>{`Total de itens: ${totalItems}`}</span>
+                      <span className={Style.TotalText}>{`Valor total: R$ ${totalValue}`}</span>
                     </div>
                   )}
                 </div>
