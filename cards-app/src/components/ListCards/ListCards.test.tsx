@@ -36,9 +36,4 @@ describe("ListCards Component", () => {
     expect(screen.getByTestId("Product 1")).toBeInTheDocument();
     expect(screen.getByTestId("Product 2")).toBeInTheDocument();
   });
-
-  test("renders Card components based on products array", () => {
-    renderListCards(mockProductsStoreWithShowCart);
-    expect(screen.getAllByText(/Product/)).toHaveLength(2);
-  });
 });

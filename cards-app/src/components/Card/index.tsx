@@ -6,11 +6,11 @@ const Card = ({ thumbnail, price, title, addOnCart, quantity }: CardsProps) => {
     <div data-testid={title} className={Style.Container}>
       <div className={Style.ThumbnailContainer}>
         <img src={thumbnail} alt={title} className={Style.Thumbnail} />
-        {quantity > 0 && (
+        {!!quantity ? (
           <div className={Style.QuantityBadge}>
             <span>{quantity}</span>
           </div>
-        )}
+        ): null}
       </div>
       <div className={Style.InfoContainer}>
         <span className={Style.Title}>{title}</span>

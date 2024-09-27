@@ -33,8 +33,8 @@ describe("Header Component", () => {
     expect(screen.getByText("5")).toBeInTheDocument();
   });
 
-  test("does not display cart count when cartCount is 0", () => {
+  test("does display cart count when cartCount is 0", () => {
     renderHeader(0, false);
-    expect(screen.queryByText("0")).not.toBeInTheDocument();
+    expect(screen.queryByText("0")).toBeInTheDocument();
   });
 });

@@ -13,13 +13,13 @@ describe("Card Component", () => {
   test("renders Card component", () => {
     renderCard("test-thumbnail.jpg");
     expect(
-      screen.getByRole("button", { name: /COMPRAR/i })
+      screen.getByRole("button", { name: /Adicionar ao carrinho/i })
     ).toBeInTheDocument();
   });
 
   test("calls addOnCart on button click", () => {
     renderCard("test-thumbnail.jpg");
-    fireEvent.click(screen.getByRole("button", { name: /COMPRAR/i }));
+    fireEvent.click(screen.getByRole("button", { name: /Adicionar ao carrinho/i }));
     expect(mockAddOnCart).toHaveBeenCalled();
   });
 });

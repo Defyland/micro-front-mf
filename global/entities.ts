@@ -69,6 +69,7 @@ export interface CardsProps {
   price: number;
   title: string;
   addOnCart: () => void;
+  quantity?: number;
 }
 
 export interface CartItem {

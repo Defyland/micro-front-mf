@@ -13,13 +13,12 @@ const ListCards = ({
     changeCartState,
   },
 }: ListCardsProps) => {
-  // Calcular quantidade de produtos no carrinho
   const cartValues: ProductOptions[] = cart.reduce<ProductOptions[]>(
     (acc, item) => {
       const found = acc.find((i) => i.id === item.id);
 
       if (found) {
-        found.quantity++;
+        found.quantity = (found.quantity ?? 0) + 1;
       } else {
         acc.push({ ...item, quantity: 1 });
       }
@@ -29,17 +28,14 @@ const ListCards = ({
     []
   );
 
-  // Calcular o total de itens e o valor total
-  const totalItems = cartValues.reduce((acc, item) => acc + item.quantity, 0);
-  const totalValue = cartValues.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
+  const totalItems = cartValues.reduce((acc, item) => acc + (item.quantity ?? 0), 0);
+  const totalValue = cartValues.reduce((acc, item) => acc + item.price * (item.quantity ?? 0), 0).toFixed(2);
 
   return (
     <>
-      {/* Listagem de produtos */}
       <div className={Style.Container}>
         <div className={Style.List}>
           {products.map((product: ProductOptions, index: number) => {
-            // Encontrar a quantidade do produto no carrinho, se houver
             const cartProduct = cartValues.find((p) => p.id === product.id);
             const quantity = cartProduct ? cartProduct.quantity : 0;
 
@@ -47,7 +43,7 @@ const ListCards = ({
               <Card
                 key={index}
                 {...product}
-                quantity={quantity} // Passar a quantidade como uma prop
+                quantity={quantity}
                 addOnCart={() => selectedProducts(product)}
               />
             );
@@ -55,7 +51,6 @@ const ListCards = ({
         </div>
       </div>
 
-      {/* Modal do carrinho */}
       {showCart && (
         <div className={Style.Modal} role="dialog" aria-labelledby="hs-basic-modal-label">
           <div className={Style.ModalContent}>
@@ -98,7 +93,7 @@ const ListCards = ({
                         <img src={item.thumbnail} alt={item.title} className={Style.CartItemImage} />
                         <div className={Style.CartItemInfo}>
                           <span className={Style.CartItemTitle}>{item.title}</span>
-                          <span className={Style.CartItemPrice}>{`R$ ${item.price}`}</span> {/* Exibe o preço do produto */}
+                          <span className={Style.CartItemPrice}>{`R$ ${item.price}`}</span>
                           <span className={Style.CartItemQuantity}>{`Qt: ${item.quantity}`}</span>
                         </div>
                       </div>
@@ -114,7 +109,6 @@ const ListCards = ({
                     </div>
                   )}
 
-                  {/* Exibe o total de itens e valor */}
                   {cartValues.length > 0 && (
                     <div className={Style.TotalContainer}>
                       <span className={Style.TotalText}>{`Total de itens: ${totalItems}`}</span>
