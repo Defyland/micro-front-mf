@@ -96,6 +96,12 @@ Para facilitar o desenvolvimento, o projeto tem os seguintes scripts no arquivo 
 - `npm run build:all`: Constrói todas as aplicações para produção.
 - `npm run test:all`: Executa os testes de todas as aplicações.
 
+Versão do Node.js:
+
+```bash
+v20.12.2
+```
+
 Além disso, é necessário instalar o **Concurrently** individualmente para que todos os serviços sejam executados em paralelo:
 
 ```bash
